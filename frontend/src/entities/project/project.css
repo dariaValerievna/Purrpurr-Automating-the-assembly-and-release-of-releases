@@ -1,0 +1,27 @@
+.project__container{
+    width: 1000px;
+    height: 100px;
+    background-color: #D9D9D9;
+    border-radius: 25px;
+    display: flex;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    
+}
+
+.project__name{
+    background-color: #B7B7B7;
+    border-radius: 25px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project__container__info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+}
+

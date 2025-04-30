@@ -1,0 +1,41 @@
+.task{
+    height: 50px;
+    width: 1000px;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+.task1{
+    position: absolute;
+}
+
+.task__branches{
+    height: auto;
+    background-color: #F5F5F5;
+    border-radius: 25px;
+    width: 1000px;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 60px;
+    margin-bottom: 20px;
+}
+
+.tasks__container{
+    padding: 50px;
+}
+
+.branch{
+    padding: 3px 0;
+}
+
+.search{
+    height: 40px;
+}

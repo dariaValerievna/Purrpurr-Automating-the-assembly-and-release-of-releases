@@ -1,0 +1,40 @@
+input{
+    background-color: #E1E1E1;
+    height: 40px;
+    border: none;
+    width: 500px;
+    border-radius: 25px;
+    padding: 0 0 0 20px;
+    outline: none;
+}
+
+h1{
+    font-size: 28px;
+}
+
+.container{
+    width: 600px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.link{
+    color: black;
+}
+
+.form__button{
+    border: black 1px solid;
+    background-color: white;
+    font-size: 16px;
+    height: auto;
+}

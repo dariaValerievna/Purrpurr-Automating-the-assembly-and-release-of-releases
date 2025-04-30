@@ -1,0 +1,36 @@
+h2{
+    font-size: 24px;
+    margin: 0;
+}
+
+.header{
+    height: 110px;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 50px 0 50px;
+    box-sizing: border-box;
+    align-items: center
+}
+
+.header__profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    
+}
+
+.header__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.search__img{
+    transform: translateY(15px);
+    padding-left: 10px;
+}
