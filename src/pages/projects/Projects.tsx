@@ -20,14 +20,14 @@ function Projects() {
             project.name.toLowerCase().includes(input.toLowerCase())
         );
         setFiltered(result);
-    }, [input, projects]); // Добавили projects в зависимости
+    }, [input, projects]); 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await getProjects();
                 setProjects(data);
-                setFiltered(data); // Инициализируем filtered при первом получении данных
+                setFiltered(data); 
             } catch (err) {
                 console.error('Ошибка при получении:', err);
             }
