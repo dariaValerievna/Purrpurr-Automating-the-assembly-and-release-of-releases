@@ -3,7 +3,7 @@ import './project.css';
 
 type ProjectProps = {
     name: string;
-    date: string;
+    branch: string;
 };
 
 export function Project(props: ProjectProps) {
@@ -27,10 +27,7 @@ export function Project(props: ProjectProps) {
             </div>
 
             <div className="project__container__info">
-                Ветки: <br />
-                Merge Request: <br />
-                Сущности (файлы): <br />
-                Дата последнего изменения: {props.date}
+                Главная ветка:{props.branch} <br />
             </div>
         </div>
     );

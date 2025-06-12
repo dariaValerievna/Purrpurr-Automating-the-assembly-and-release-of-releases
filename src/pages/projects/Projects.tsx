@@ -3,41 +3,39 @@ import { Project } from '../../entities/project/project/Project.tsx';
 import { useState, useEffect } from 'react';
 import search from './../../assets/search.svg';
 import './../../widgets/header/header.css'
+import { getProjects } from '../../api/api.js';
 
-export const mockProjects = [
-    {
-        id: 1,
-        name: 'Project Alpha',
-        created_at: '2024-12-01',
-    },
-    {
-        id: 2,
-        name: 'Beta Build',
-        created_at: '2025-01-15',
-    },
-    {
-        id: 3,
-        name: 'Gamma Test Suite',
-        created_at: '2025-02-10',
-    },
-    {
-        id: 4,
-        name: 'Delta Analytics',
-        created_at: '2025-03-05',
-    },
-];
+type Project={name:string; 
+    defaultBranch: string
+}
 
 function Projects() {
+    const [projects, setProjects] = useState<Project[]>([])
 
-      const [filtered, setFiltered] = useState(mockProjects);
+      const [filtered, setFiltered] = useState(projects);
       const [input, setInput] = useState<string>('');
 
       useEffect(() => {
-        const result = mockProjects.filter(project =>
+        const result = projects.filter(project =>
           project.name.toLowerCase().includes(input.toLowerCase())
         );
         setFiltered(result);
       }, [input]);
+
+      useEffect(() => {
+
+
+    const fetchData = async () => {
+      try {
+        const data = await getProjects();
+        setProjects(data)
+      } catch (err) {
+        console.error('Ошибка при получении:', err);
+            }
+    };
+
+    fetchData();
+  }, []);
 
     return (
         <div>
@@ -60,7 +58,7 @@ function Projects() {
                         <Project
                             key={index}
                             name={proj.name}
-                            date={proj.created_at}
+                            branch={proj.defaultBranch}
                         />
                     );
                 })}

@@ -1,12 +1,13 @@
-API_URL = '' //URL будет добавлен позже
+const API_URL = 'http://localhost:8080'; //URL будет добавлен позже
+
 
 export async function getProjects() {
   const token = localStorage.getItem('mockAuthToken'); 
 
-  const response = await fetch(API_URL/getprojects, {
+  const response = await fetch(`${API_URL}/api/releases/gitlab`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`, 
+      //'Authorization': `Bearer ${token}`, 
     },
   });
 
