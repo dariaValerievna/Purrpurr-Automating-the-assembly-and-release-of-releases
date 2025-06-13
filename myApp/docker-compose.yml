@@ -1,5 +1,28 @@
+version: '3.8'
+
 services:
-  postgres:
+  release-manager-app:
+    build: .
+    container_name: release_manager_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://release_manager_db:5432/release_manager
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      GITLAB_URL: ${GITLAB_URL:-https://gitlab.com}
+      GITLAB_TOKEN: ${GITLAB_TOKEN}
+      YOUTRACK_URL: ${YOUTRACK_URL}
+      YOUTRACK_TOKEN: ${YOUTRACK_TOKEN}
+      YOUTRACK_PROJECT_ID: ${YOUTRACK_PROJECT_ID}
+    depends_on:
+      release_manager_db:
+        condition: service_healthy
+    networks:
+      - release-network
+
+  release_manager_db:
     image: postgres:15
     restart: always
     container_name: release_manager_db
@@ -8,9 +31,20 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - '5433:5432'  # исправлено здесь
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - release-network
 
 volumes:
   postgres_data:
+
+networks:
+  release-network:
+    driver: bridge

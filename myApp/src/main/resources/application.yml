@@ -5,19 +5,34 @@ spring:
     password: postgres
   jpa:
     hibernate:
-      ddl-auto: validate  # лучше использовать validate вместо update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
   flyway:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
 
+gitlab:
+  url: https://gitlab.com
+  token: glpat-_SAZue4y6MvN4_A7CGk7
+
+# Конфигурация YouTrack
+youtrack:
+  url: https://purrpurr12.youtrack.cloud
+  token: perm-YWRtaW4=.NDMtMA==.0GnqwaMaFtCc6nqPuj7SAE8wQ0p3Oh
+  project-id: TES
+  release-statuses: Open,In Progress,Fixed,Verified,Released,Closed
+  valid-statuses: Fixed,Verified,Ready for Release
+  blocked-statuses: Blocked,On Hold
+  dependency-link-types: depends,blocks,subtask of
+  fields: "id,summary,customFields(name,value),reporter(name),assignee(name),tags(name),created,updated"
+
 logging:
   level:
     root: INFO
     com.example.myapp.service: DEBUG
+    org.springframework.web.reactive.function.client: DEBUG

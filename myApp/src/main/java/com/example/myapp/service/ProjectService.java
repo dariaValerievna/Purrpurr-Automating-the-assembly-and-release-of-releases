@@ -18,6 +18,12 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
+    // ✅ Добавь этот метод
+    public Project findById(Long id) {
+        return projectRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Project not found with id: " + id));
+    }
+
     public ProjectDTO createProject(ProjectDTO projectDTO) {
         Project project = new Project();
         project.setName(projectDTO.getName());
@@ -53,5 +59,4 @@ public class ProjectService {
                 .map(this::convertToDTO)
                 .toList();
     }
-
 }
